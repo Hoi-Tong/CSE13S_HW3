@@ -33,8 +33,32 @@ int main() {
 
 void merge_sort(int arr[], int left, int right) {
     /* TODO: Implement merge sort by using divide and conquer recursively. This function should call the merge sub-routine. */ 
+    if (left < right) {
+        int mid = left + (right-left)/2;
+        merge_sort(arr, left, mid);
+        merge_sort(arr, mid + 1, right);
+        merge(arr, left, mid, right);
+    }
 }
 
 void merge(int arr[], int left, int mid, int right) {
     /* TODO: Implement the merge logic. */
+    int p1 = left;
+    int p2 = mid + 1;
+    for (int i = left; i <= right; i++) {
+        if (p1 > mid) {
+            arr[i] = arr[p2];
+            p2++;
+        } else if (p2 > right){
+            arr[i] = arr[p1];
+            p1++;
+        } else if (arr[p1] <= arr[p2]) {
+            arr[i] = arr[p1];
+            p1++;
+        } else {
+            arr[i] = arr[p2];
+            p2++;
+        }
+        }
+    }
 }
