@@ -58,7 +58,7 @@ void merge(int arr[], int left, int mid, int right) {
         } else if (p2 > right){
             arr[i] = arr2[p1-left];
             p1++;
-        } else if (arr[p1] <= arr[p2]) {
+        } else if (arr[p1-left] <= arr[p2-left]) {
             arr[i] = arr2[p1-left];
             p1++;
         } else {
