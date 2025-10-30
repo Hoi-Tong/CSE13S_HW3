@@ -20,14 +20,14 @@ int value(int coin){
 
 int count(int amount, int maxCoin){
   /* TODO: Count the number of ways to make change for 'amount' using coins with value <= the value of 'maxCoin' */
-  if (amount = 0) {
+  if (amount == 0) {
     return 1;
   } else if (amount < 0) {
     return 0;
   } else if (maxCoin == 1) {
-    return count(amount - maxCoin, maxCoin);
+    return count(amount - value(maxCoin), maxCoin);
   } else {
-    return count(amount - maxCoin, maxCoin) + count(amount, maxCoin -1);
+    return count(amount - value(maxCoin), maxCoin) + count(amount, maxCoin -1);
   }
 }
 
