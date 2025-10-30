@@ -28,8 +28,11 @@ int main() {
       lead = getMSDigit(read);
       nums[lead] += 1;
     }
+    printf("\n");
+    printf("Ctrl-D\n");
     for (int j = 0; j < 10; j++) {
       printf("%d:%d ", j, nums[j]);
     }
+    printf("\n");
     return 0;
 }

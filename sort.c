@@ -45,20 +45,26 @@ void merge(int arr[], int left, int mid, int right) {
     /* TODO: Implement the merge logic. */
     int p1 = left;
     int p2 = mid + 1;
+    int arr2[right-left +1];
+
+    for (int i = left; i <= right; i++) {
+        arr2[i - left] = arr[i];
+    }
+
     for (int i = left; i <= right; i++) {
         if (p1 > mid) {
-            arr[i] = arr[p2];
+            arr[i] = arr2[p2-left];
             p2++;
         } else if (p2 > right){
-            arr[i] = arr[p1];
+            arr[i] = arr2[p1-left];
             p1++;
         } else if (arr[p1] <= arr[p2]) {
-            arr[i] = arr[p1];
+            arr[i] = arr2[p1-left];
             p1++;
         } else {
-            arr[i] = arr[p2];
+            arr[i] = arr2[p2-left];
             p2++;
         }
         }
     }
-}
+

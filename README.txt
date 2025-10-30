@@ -14,9 +14,17 @@ then it will recurses with adding both the (amount - maxCoins) number and the am
 the (maxCoins - 1) value.
 
 
+
 2. Frequency of leading digits
 "Why This Works" Explanation: Explain the underlying logic and reasoning that makes your code solve the problem. 
 Focus on the core concepts and principles your solution utilizes.
+
+It works because everytime there is number in the input, it will call the getMSDigit function 
+to get the leading digit of the number. The getMSDigit function basically keep dividing the 
+number by 10 until it is less than or equal to 9. Then, it will go back and add one to the 
+index of an array to count how many leading numbers there are for the index number. Then, 
+the action will keep repeating until the user put in Ctrl-D. Then, it will print out the 
+number of leading digitals in the format shown in the example.
 
 
 
@@ -33,7 +41,16 @@ of matrix a and rows of matrix b to multiple them together to get matrix c. Then
 I used for loop to loop through matrix a, b, and c to print out the numbers in the matrix.
 
 
+
 4. Merge sort
 "Why This Works" Explanation: Explain the underlying logic and reasoning that makes your code solve the problem. 
 Focus on the core concepts and principles your solution utilizes.
 
+It works because I completed the merge and merge_sort function. The merge_sort function is 
+to keep dividing the array into two half using recursion. It will keep dividing the array 
+into two half until all array has only one element in it. Then, it will start calling the 
+merge function to merge the left and right array into one ordered array. Then, it will keep 
+looping and merging to keep all the array number in order. I specifically made a copy of the 
+array, so it can be used for the left and right pointers to tell which number is smaller and 
+the number will put to the beginning of the real array. It is so that the values of array 
+won't be messed up when determining which number is smaller.
