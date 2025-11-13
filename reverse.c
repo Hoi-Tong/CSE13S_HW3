@@ -4,7 +4,15 @@
 
 void reverseArray(int *arr, int size) {
     /* TODO: reverse the array arr using pointers */
-
+    int *right_arr = arr + size -1;
+    int temp;
+    while (right_arr > arr) {
+        temp = *arr;
+        *arr = *right_arr;
+        *right_arr = temp;
+        right_arr--;
+        arr++;
+    }
 }
 
 int main() {
