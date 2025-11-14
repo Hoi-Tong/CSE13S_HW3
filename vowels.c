@@ -6,7 +6,14 @@
 
 int countVowels(char *str) {
     /* TODO: return the number of vowels in the string str */
-
+    int count = 0;
+    while (*str != '\0') {
+        if (*str == 'a' || *str == 'e' || *str == 'i' || *str == 'o' || *str == 'u' || *str == 'A' || *str == 'E' || *str == 'I' || *str == 'O' || *str == 'U') {
+            count++;
+        }
+        str++;
+    }
+    return count;
 }
 
 int main() {
@@ -24,9 +31,20 @@ int main() {
              If allocation is not successful, print "Memory allocation failed!" and exit with a return value of 1
              Tip: do not forget to free any memory that you allocated.
               */
-             
+            
+    str = malloc((n+1) * sizeof(char));
 
+    printf("Enter a string: ");
+    str input;
+    scanf("%s", &input);
+    fgets(input, n+1, stdin);
+    if (*str == '\0') {
+        perror("Memory allocation failed!");
+        return 1;
+    }
+    vowelCount = countVowels(str);
     printf("Number of vowels: %d\n", vowelCount);
+    free(str);
 
     return 0;
 }
