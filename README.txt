@@ -19,6 +19,14 @@ right_arr.
 "Why This Works" Explanation: Explain the underlying logic and reasoning that makes your code solve the problem. 
 Focus on the core concepts and principles your solution utilizes.
 
+It works beacuse I called getchar() at the beginning. Then, I initilizated the space I was 
+given in the input with malloc. Then, I use a if statement to check if the input has any 
+character. If the input has nothing, then I will print memory error and free all spaces. 
+If there is an input, then I use fget to get the input string. Then, I call countVowels(str) 
+to get the number of vowels there are in the string. I loop through the string until I reach 
+null. I use an if statement to check if the character equal to upper and lower case of aeiou. 
+Then, I use a value count to track and return the total amount of the vowels back. After I 
+receive the returned value, I print it out.
 
 
 3. Implementing a binary search tree.

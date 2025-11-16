@@ -12,26 +12,64 @@ typedef struct Node {
 
 Node* createNode(int value) {
     /* TODO: create a new node. */
+    Node* newNode = (Node*) malloc(sizeof(Node));
+
+    newNode->data = value;
+    newNode->left = NULL;
+    newNode->right = NULL;
+
+    return newNode;
 }
 
 Node* insert(Node* root, int value) {
     /* TODO: insert the given value in the BST. The BST property must not be violated. */
+    if (root == NULL) {
+        return createNode(value);
+    }
 
+    if (value < root->data) {
+        root->left = insert(root->left, value);
+    } else if (value > root->data) {
+        root->right = insert(root->right, value);
+    }
+    return root;
 }
 
 Node* search(Node* root, int value) {
     /* TODO: search the tree for the given value. You must use the BST property. */
-
+    if (root == NULL) {
+        return createNode(value);
+    }
+    
+    if (value == root->data) {
+        return root;
+    } else if (value < root->data) {
+        return search(root->left, value);
+    } else {
+        return search(root->right, value);
+    }
 }
 
 void inOrderTraversal(Node* root) {
     /* TODO: traverse the tree in order to print values in ascending order. */
+    if (root == NULL) {
+        return;
+    }
 
+    inOrderTraversal(root->left);
+    printf("%d ", root->data);
+    inOrderTraversal(root->right);
 }
 
 void freeTree(Node* root) {
     /* TODO: free any allocated memory */
-
+    if (root == NULL) {
+        return;
+    }
+    
+    freeTree(root->left);
+    freeTree(root->right);
+    free(root);
 }
 
 int main() { 
