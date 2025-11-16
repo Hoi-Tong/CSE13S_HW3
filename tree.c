@@ -38,7 +38,7 @@ Node* insert(Node* root, int value) {
 Node* search(Node* root, int value) {
     /* TODO: search the tree for the given value. You must use the BST property. */
     if (root == NULL) {
-        return createNode(value);
+        return NULL;
     }
     
     if (value == root->data) {
@@ -66,7 +66,7 @@ void freeTree(Node* root) {
     if (root == NULL) {
         return;
     }
-    
+
     freeTree(root->left);
     freeTree(root->right);
     free(root);
