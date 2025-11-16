@@ -31,17 +31,16 @@ int main() {
              If allocation is not successful, print "Memory allocation failed!" and exit with a return value of 1
              Tip: do not forget to free any memory that you allocated.
               */
-            
-    str = malloc((n+1) * sizeof(char));
-
-    printf("Enter a string: ");
-    str input;
-    scanf("%s", &input);
-    fgets(input, n+1, stdin);
-    if (*str == '\0') {
-        perror("Memory allocation failed!");
+    getchar();
+    str = (char*)malloc((n+1) * sizeof(char));
+    if (str == NULL) {
+        printf("Memory allocation failed!\n");
+        free(str);
         return 1;
     }
+    printf("Enter a string: ");
+    
+    fgets(str, n+1, stdin);
     vowelCount = countVowels(str);
     printf("Number of vowels: %d\n", vowelCount);
     free(str);
