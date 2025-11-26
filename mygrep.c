@@ -11,6 +11,15 @@ int print_matched_lines(const char *s, const char *filename) {
 	     If a line contains the string s, print it on the stdout. 
              You may use strstr to determine if a string appears in another string. Check man page for strstr for details.
 	     Return 0 upon successful completion. Otherwise, return -1. */
+    FILE *fp = fopen(filename, "r");
+
+    char line[LINE_SIZE];
+    while (fgets(line, sizeof(line), fp) != NULL) {
+        if(strstr(line, s) != NULL) {
+            printf("%s", line);
+        }
+    }
+    fclose(fp);
     return 0;
 }
 
