@@ -7,7 +7,14 @@ int copy_integers(FILE *outfp, FILE *infp, int start, int end)
     /* TODO: Copy integers from start to end. 
 	     You may like to use the functions fseek(), fread() and fwrite() to accomplish this task. Check man pages for details.
 	     Return 0 upon successful completion. Otherwise, return -1. */	
-
+    if (fseek(infp, start * sizeof(int), SEEK_SET) != 0){
+        return -1;
+    }
+    int *temp = (int*) malloc((end-start+1)*sizeof(int));
+    fread(temp, end - start +1 , sizeof(int), infp);
+    fwrite(temp, sizeof(int), end -start +1, outfp);   
+    free(temp);
+    
     return 0;
 }
 
@@ -21,6 +28,16 @@ int main(int argc, char *argv[])
     FILE *infp, *outfp;
 
     /* TODO: Open the input and output files for read and write operations respectively. If the operations fail, return -1. */
+    infp = fopen(argv[1], "rb");
+    if (infp == NULL) {
+        return -1;
+    }
+
+    outfp = fopen(argv[2], "wb");
+    if (outfp == NULL) {
+        fclose(infp);
+        return -1;
+    }
 
 
     for (int i=3; i<argc; i++) {
@@ -44,7 +61,13 @@ int main(int argc, char *argv[])
     } 
 
     /* TODO: Close the files. If the operations fail, return -1. */
-
+    if (fclose(infp) != 0) {
+        fclose(outfp);
+        return -1;
+    }
+    if (fclose(outfp) != 0){
+        return -1;
+    }
 
     return 0;
 }
