@@ -11,7 +11,7 @@ int copy_integers(FILE *outfp, FILE *infp, int start, int end)
         return -1;
     }
     int *temp = (int*) malloc((end-start+1)*sizeof(int));
-    fread(temp, end - start +1 , sizeof(int), infp);
+    fread(temp, sizeof(int), end - start +1, infp);
     fwrite(temp, sizeof(int), end -start +1, outfp);   
     free(temp);
     
