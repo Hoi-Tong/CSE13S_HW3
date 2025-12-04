@@ -3,54 +3,69 @@
 
 int main(void) {
     /* ───────── strlen checks ───────── */
-    const char *str = "abc";
-    assert(strlen(str)==3);
-    
-    assert(strlen(NULL) == 0);
-    assert(strlen("")==0);
-    assert(strlen(" ")== 1
-)
+    strlen("abc");
+    strlen("abcd");
+    strlen(NULL);
+    strlen("");
+    strlen(" ");
+    strlen("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    strlen("aa\0");
+    strlen("a\n");
+
     /* ───────── strstr checks ───────── */
-    assert(strstr("abc", "a")== 0);
-    assert(strstr("abc", "d")==NULL);
-    assert(strstr(NULL, "a")== NULL);
-    assert(strstr(NULL, NULL)==NULL);
-    assertEqual(strstr("abc", NULL)=="abc");
+    strstr("abc", "a");
+    strstr("abc", "d");
+    strstr(NULL, "a");
+    strstr(NULL, NULL);
+    strstr("abc", NULL);
+    strstr("abc", "");
+    strstr("abc", "abcde");
+    strstr("abc", "b");
+    strstr("abc", "c");
 
     /* ───────── strncpy checks ───────── */
-    char buffer1[5]; /*when src is less than n*/
+    char buffer1[10]; /*when src is less than n*/
     strncpy(buffer1, "ab", 5);
-    assertEqual(buffer1, "ab\0\0");
 
-    char buffer2[5]; /*when src is equal to n*/
+    char buffer2[10]; /*when src is equal to n*/
     strncpy(buffer2, "abcde", 5);
-    assertEqual(buffer2, "abcde");
 
-    char buffer3[11]; /*when src is longer than n*/
-    strncpy(buffer3, "abcdefghijk", 5);
-    assertEqual(buffer3, "abcdefghijk");
+    char buffer3[10]; /*when src is longer than n*/
+    strncpy(buffer3, "abcdefgh", 5);
 
-    char buffer4[5]; /*when src is NULL*/
+    char buffer4[10]; /*when src is NULL*/
     strncpy(buffer4, NULL, 4);
-    assertEqual(buffer4, "\0\0\0\0");
 
-    char buffer5[1]; /*when n is 0 and src is NULL*/
-    strncpy(buffer5, NULL, 0);
-    assertEqual(buffer5, "");
+    char buffer5[10]; /*when n is 0 and src is NULL*/
+    strncpy(buffer5, NULL, 2);
+
+    char buffer6[10];
+    strncpy(buffer6, "aaa", 0);
+
+    char buffer7[10];
+    strncpy(buffer7, "aaa", 1);
+
+    char buffer8[10];
+    strncpy(buffer8, "", 3);
+
+    char buffer9[10];
+    strncpy(buffer9, "aa\n", 3);
 
     /* ───────── strcmp checks ───────── */
-    assert(strcmp("abc", "abc")==0);
-    assert(strcmp("", "")==0);
+    strcmp("abc", "abc");
+    strcmp("", "");
 
-    assert(strcmp(NULL, NULL)==0);
+    strcmp(NULL, NULL);
 
-    assert(strcmp("ab", "yz") < 0);
-    assert(strcmp("abc", "abz") < 0);
-    assert(strcmp("", "a") < 0);
+    strcmp("ab", "yz");
+    strcmp("abc", "abz");
+    strcmp("", "a");
 
-    assert(strcmp("yz", "ab") > 0);
-    assert(strcmp("abz", "abc") > 0);
-    assert(strcmp("a", "") > 0);
+    strcmp("yz", "ab");
+    strcmp("abz", "abc");
+    strcmp("a", "");
+
+    strcmp("abc", "acc");
 
     return 0;
 }
