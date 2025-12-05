@@ -1,15 +1,15 @@
 #!/workspaces/CSE13S_HW3/week_10_discussion_2.sh
 
 
-echo "Enter the number: "
-read num
+read -p "Enter the number: " num
+
 
 checkNum() {
     read value
-    if [ value -eq 0 ]
+    if [ $value -eq 0 ]
     then
         echo "zero"
-    elif [ value -lt 0 ]
+    elif [ $value -lt 0 ]
     then
         echo "negative"
     else
@@ -26,7 +26,8 @@ checkNum() {
 
 n=1
 
-while [ n -le num ]
+while [ $n -le $num ]
 do
     checkNum
+    (( n+=1 ))
 done
